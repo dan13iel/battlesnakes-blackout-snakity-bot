@@ -1,0 +1,5 @@
+build:
+	go build -o snake_proxy snake_proxy.go
+	cargo build --release --features tt,mcts_fallback
+deploy: build
+	systemctl restart shapeshifter

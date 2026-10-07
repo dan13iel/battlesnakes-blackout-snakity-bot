@@ -1,0 +1,67 @@
+#!/bin/bash
+version="0.1.0"
+
+verbose=""
+snakes=()
+x=10
+declare -A snake_scores
+snake_scores["draw"]=0
+params="$@"
+params=${params//-x [0-9]*/}
+params=${params//--num-games [0-9]*/}
+
+# parse arguments
+while [[ "$1" =~ .+ && ! "$1" == "--" ]]; do case $1 in
+	-h | --help )
+		echo "Play games of Battlesnake locally, in a loop. CLI compatible with battlesnake play.
+
+Usage:
+  compare-snakes [flags]
+
+Flags:
+  -x, --num-games 		The number of games to run
+
+The following manual of battlesnake play applies.
+-------------------------------------------------
+		"
+		battlesnake play --help
+		exit
+		;;
+	--version )
+		echo $version
+		exit
+    	;;
+	-n | --name )
+		shift
+		snakes+=($1)
+		snake_scores[$1]=0
+    	;;
+	-x | --num-games )
+		shift
+		x=$1
+		;;
+esac; shift; done
+
+# run x games in a loop and count the wins of each snake
+for ((i=0; i<x; i++)); do
+	# print the progress
+	echo -ne "progress: $i/$x\r"
+
+	# run game
+	result=$(battlesnake play $(echo "$params") 2>&1 | grep "Game completed")
+	echo "$result"
+	if [[ $result =~ .*draw.* ]]; then
+		snake_scores["draw"]=$((snake_scores["draw"] + 1))
+	fi
+	for snake in "${snakes[@]}"; do
+		if [[ $result =~ .*$snake.* ]]; then
+			snake_scores[$snake]=$((snake_scores[$snake] + 1))
+		fi
+	done
+done
+
+echo " "
+for snake in "${snakes[@]}"; do
+	echo "$snake : ${snake_scores[$snake]}"
+done
+echo "draw : ${snake_scores["draw"]}"

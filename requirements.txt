@@ -1,0 +1,12 @@
+flask
+numpy
+numba
+pandas
+pydantic
+plyer
+pyinstrument
+tqdm
+torch
+safetensors
+requests
+matplotlib
