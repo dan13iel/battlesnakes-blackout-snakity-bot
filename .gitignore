@@ -1,0 +1,15 @@
+/downloads
+*.pyc
+download_yt.py
+/__pycache__
+webscraper/games.parquet
+/machine-learning/__pycache__
+/machine-learning/checkpoints
+/machine-learning/checkpoints_long_dur
+/machine-learning/checkpoints_long_dur_512
+/server/__pycache__
+/venv312
+/checkpoints
+exploiters
+seperate_latest
+/games
