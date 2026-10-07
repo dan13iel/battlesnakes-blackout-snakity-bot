@@ -5,6 +5,8 @@ This was built for the IEEE CoG 2026 Battlesnake Blackout competition and placed
 
 This repo contains everything required to train a battlesnake blackout PPO model from scratch using cirriculm learning, pooled self play, and experiement with a few different techniques including ExIT (https://arxiv.org/abs/1705.08439), PFSP (https://www.nature.com/articles/s41586-019-1724-z), potential based reward shaping (https://arxiv.org/abs/2402.07411) as well as applying the shapeshifter battlesnake engine (https://github.com/JonathanArns/shapeshifter) as a ground truth for the best move. 
 
+The final version of Snakity was a 1.26 million parameter actor-critic LSTM RL model trained via pooled self-play on ~3B game ticks obtaining 2nd place.
+
 ### The files
 
 These are the main files you will probably find useful:
@@ -27,6 +29,8 @@ These are the main files you will probably find useful:
 |eval.py|Like above 2 but does a bunch of games with only 4 checkpoints.|
 |obsmem.py|Mostly feature engineering|
 |snakenet.py|Pytorch model for snakity|
+
+Note that due to the model weights in the repo it might be a bit slow to download.
 
 Below I included the writeup which is on kaggle (https://www.kaggle.com/writeups/dan13iel/snakity-battlesnake-blackout-2026)
 
