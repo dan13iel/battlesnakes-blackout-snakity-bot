@@ -231,5 +231,5 @@ Since I couldn't pull a game I had already visualised I ran 300 games, turns out
 I left some more games in the attachments (on kaggle) for if your interested.
 
 ## Playing Snakity yourself
-URL: `playsnakity.up.railway.app`
+Run `battle_snakity_webserver.py` to host it locally.
 Playing Snakity with blind mode enabled lets you see exactly what all the other snakes can see.
